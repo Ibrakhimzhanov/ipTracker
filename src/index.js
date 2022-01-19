@@ -1,6 +1,7 @@
 import "leaflet/dist/leaflet.css";
 import L from "leaflet";
-import { validateIp } from "./helpers";
+import { addTileLayer, validateIp } from "./helpers";
+import icon from "../images/icon-location.svg";
 
 const ipInput = document.querySelector(".search-bar__input");
 const btn = document.querySelector("button");
@@ -13,26 +14,20 @@ const ispInfo = document.querySelector("#isp");
 btn.addEventListener("click", getData);
 ipInput.addEventListener("keydown", handleKey);
 
+//! map
+const markerIcon = L.icon({
+  iconUrl: icon,
+  iconSize: [30, 40],
+});
 const mapArea = document.querySelector(".map");
 const map = L.map(mapArea, {
   center: [51.505, -0.09],
   zoom: 13,
 });
+addTileLayer(map);
+L.marker([51.505, -0.09], { icon: markerIcon }).addTo(map);
 
-L.tileLayer(
-  "https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}",
-  {
-    attribution:
-      'Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>.Coded by <a target="_blank" href="https://hashnode.com/@Ibrakhimzhanov">Ibrakihmzhanov</a>.',
-    maxZoom: 18,
-    id: "mapbox/streets-v11",
-    tileSize: 512,
-    zoomOffset: -1,
-    accessToken:
-      "pk.eyJ1IjoibWVjaDE5OTIyIiwiYSI6ImNreWxpMXpzMTM2ZHQycHBieG4xYXN1NDUifQ.xLfmHze1pbIHQNowqyV2jQ",
-  }
-).addTo(map);
-
+//! getIp
 function getData() {
   if (validateIp(ipInput.value)) {
     fetch(`
@@ -49,9 +44,12 @@ function handleKey(event) {
 }
 
 function setInfo(mapData) {
+  const { lat, lng, country, region, timezone } = mapData.location;
   ipInfo.innerText = mapData.ip;
-  locationInfo.innerText =
-    mapData.location.country + " " + mapData.location.region;
-  timeZoneInfo.innerText = mapData.location.timezone;
+  locationInfo.innerText = country + " " + region;
+  timeZoneInfo.innerText = timezone;
   ispInfo.innerText = mapData.isp;
+
+  map.setView([lat, lng]);
+  L.marker([lat, lng], { icon: markerIcon }).addTo(map);
 }
