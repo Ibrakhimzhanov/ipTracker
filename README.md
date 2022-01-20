@@ -1,6 +1,7 @@
 # Frontend Mentor - решение для отслеживания IP-адресов
 
-Это решение [проблемы отслеживания IP-адресов на Frontend Mentor] (https://www.frontendmentor.io/challenges/ip-address-tracker-I8-0yYAH0). Испытания Frontend Mentor помогут вам улучшить свои навыки программирования, создавая реалистичные проекты.
+Это решение [проблемы отслеживания IP-адресов на Frontend Mentor] (https://www.frontendmentor.io/challenges/ip-address-tracker-I8-0yYAH0). 
+Используя испытания на #frontendMentor Я улучшил свое понимания в работе с API в работе с polyfill, а так же в построения проектов и модулей
 
 ## Оглавление
 
