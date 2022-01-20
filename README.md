@@ -121,7 +121,7 @@ function setInfo(mapData) {
 
 ## Автор
 
-- Мой блок на hashnode- [Ibrakhimzhanov Islam] (https://middleit.hashnode.dev/)
+- Мой блок на hashnode- [Ibrakhimzhanov Islam](https://middleit.hashnode.dev/)
 - Frontend Mentor - [@Ibrakhimzhanov](https://www.frontendmentor.io/profile/Ibrakhimzhanov)
 - Linkedin - [@Ibrakhimzhanov](https://www.linkedin.com/in/ibrakhimzhanov/)
 
