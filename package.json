@@ -2,15 +2,17 @@
   "name": "ip-address-tracker-master",
   "version": "1.0.0",
   "description": "![Design preview for the IP address tracker coding challenge](./design/desktop-preview.jpg)",
-  "main": "index.js",
   "scripts": {
     "start": "parcel index.html --open",
-    "build": "parcel build index.html --out-dir=build"
+    "build": "parcel build index.html --dist-dir=build",
+    "predeploy": "npm run build",
+    "deploy": "vercel --prod"
   },
-  "author": "",
+  "author": "Ibrakhimzhanov Islam",
   "license": "ISC",
   "devDependencies": {
-    "parcel": "^2.2.1"
+    "parcel": "^2.2.1",
+    "vercel": "^23.1.2"
   },
   "dependencies": {
     "babel-polyfill": "^6.26.0",
