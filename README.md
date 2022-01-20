@@ -37,8 +37,8 @@
 
 ### Ссылки
 
-- URL-адрес решения: [github] (https://github.com/Ibrakhimzhanov/ipTracker)
-- URL-адрес активного сайта: [vercel] (https://ipfind-mauve.vercel.app/)
+- URL-адрес решения: [github](https://github.com/Ibrakhimzhanov/ipTracker)
+- URL-адрес активного сайта: [vercel](https://ipfind-mauve.vercel.app/)
 
 ## Мой процесс
 
