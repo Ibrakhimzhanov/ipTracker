@@ -38,7 +38,7 @@
 ### Ссылки
 
 - Репозитории на: [github](https://github.com/Ibrakhimzhanov/ipTracker)
-- Готовый проект: [vercel](https://ipfind-mauve.vercel.app/)
+- Готовый проект: [ipfind](https://ipfind-mauve.vercel.app/)
 
 ## Мой процесс
 
