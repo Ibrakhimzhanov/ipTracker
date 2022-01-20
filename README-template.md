@@ -1,113 +1,116 @@
-# Frontend Mentor - IP address tracker solution
+# Frontend Mentor - решение для отслеживания IP-адресов
 
-This is a solution to the [IP address tracker challenge on Frontend Mentor](https://www.frontendmentor.io/challenges/ip-address-tracker-I8-0yYAH0). Frontend Mentor challenges help you improve your coding skills by building realistic projects. 
+Это решение [проблемы отслеживания IP-адресов на Frontend Mentor] (https://www.frontendmentor.io/challenges/ip-address-tracker-I8-0yYAH0). Испытания Frontend Mentor помогут вам улучшить свои навыки программирования, создавая реалистичные проекты.
 
-## Table of contents
+## Оглавление
 
-- [Overview](#overview)
-  - [The challenge](#the-challenge)
-  - [Screenshot](#screenshot)
-  - [Links](#links)
-- [My process](#my-process)
-  - [Built with](#built-with)
-  - [What I learned](#what-i-learned)
-  - [Continued development](#continued-development)
-  - [Useful resources](#useful-resources)
-- [Author](#author)
-- [Acknowledgments](#acknowledgments)
+- [Обзор](#обзор)
+  - [Вызов](#вызов)
+  - [Скриншот](#снимок-экрана)
+  - [Ссылки](#ссылки)
+- [Мой процесс](#мой-процесс)
+  - [Построено с помощью](#построено-с-помощью)
+  - [Что я выучил](#что-я-выучил)
+  - [Продолжение разработки](#продолжение-разработки)
+  - [Полезные ресурсы](#полезные-ресурсы)
+- [Автор](#автор)
+- [Благодарность](#благодарность)
 
-**Note: Delete this note and update the table of contents based on what sections you keep.**
+**Примечание. Удалите это примечание и обновите оглавление в зависимости от того, какие разделы вы сохранили.**
 
-## Overview
+## Обзор
 
-### The challenge
+### Соревнование
 
-Users should be able to:
+Пользователи должны иметь возможность:
 
-- View the optimal layout for each page depending on their device's screen size
-- See hover states for all interactive elements on the page
-- See their own IP address on the map on the initial page load
-- Search for any IP addresses or domains and see the key information and location
+- Просмотр оптимального макета для каждой страницы в зависимости от размера экрана их устройства
+- Просматривайте состояния наведения для всех интерактивных элементов на странице.
+- Увидеть собственный IP-адрес на карте при начальной загрузке страницы
+- Поиск любых IP-адресов или доменов и просмотр ключевой информации и местоположения
 
-### Screenshot
+### Снимок экрана
 
-![](./screenshot.jpg)
+![](./iptracker.png)
 
-Add a screenshot of your solution. The easiest way to do this is to use Firefox to view your project, right-click the page and select "Take a Screenshot". You can choose either a full-height screenshot or a cropped one based on how long the page is. If it's very long, it might be best to crop it.
+### Ссылки
 
-Alternatively, you can use a tool like [FireShot](https://getfireshot.com/) to take the screenshot. FireShot has a free option, so you don't need to purchase it. 
+- URL-адрес решения: [github] (https://github.com/Ibrakhimzhanov/ipTracker)
+- URL-адрес активного сайта: [vercel] (https://ipfind-mauve.vercel.app/)
 
-Then crop/optimize/edit your image however you like, add it to your project, and update the file path in the image above.
+## Мой процесс
 
-**Note: Delete this note and the paragraphs above when you add your screenshot. If you prefer not to add a screenshot, feel free to remove this entire section.**
+### Построено с помощью
 
-### Links
+- Семантическая разметка HTML5
+- Методология БЭМ
+- Leaflet
+- Пользовательские свойства CSS
+- FlexBox
+- CSS-сетка
 
-- Solution URL: [Add solution URL here](https://your-solution-url.com)
-- Live Site URL: [Add live site URL here](https://your-live-site-url.com)
+### Что я выучил
 
-## My process
-
-### Built with
-
-- Semantic HTML5 markup
-- CSS custom properties
-- Flexbox
-- CSS Grid
-- Mobile-first workflow
-- [React](https://reactjs.org/) - JS library
-- [Next.js](https://nextjs.org/) - React framework
-- [Styled Components](https://styled-components.com/) - For styles
-
-**Note: These are just examples. Delete this note and replace the list above with your own choices**
-
-### What I learned
-
-Use this section to recap over some of your major learnings while working through this project. Writing these out and providing code samples of areas you want to highlight is a great way to reinforce your own knowledge.
-
-To see how you can add code snippets, see below:
+Я научился работать с многими технологиями в том числе и с parcel, babel
+В написании html семантики использовал методологию БЭМ. Так же,чтобы проект был чище было мною принято решения использовать модули и разносить на разные модули.
 
 ```html
-<h1>Some HTML code I'm proud of</h1>
+<h1 class="title">IP Address Tracker</h1>
+<div class="search-bar">
+  <input
+    type="text"
+    class="search-bar__input"
+    placeholder="Search for any IP address or domain"
+  />
+  <button class="search-bar__btn"></button>
+</div>
+<div class="info">
+  <div class="info__block">
+    <div class="info__block-subtitle">IP Address</div>
+    <div class="info__block-title" id="ip"></div>
+  </div>
+</div>
 ```
-```css
-.proud-of-this-css {
-  color: papayawhip;
+
+```CSS
+  .search-bar__btn::after {
+  border-color: white white transparent transparent;
+  transform: rotate(45deg);
 }
+
 ```
+
 ```js
-const proudOfThisFunc = () => {
-  console.log('🎉')
+function setInfo(mapData) {
+  const { lat, lng, country, region, timezone } = mapData.location;
+  ipInfo.innerText = mapData.ip;
+  locationInfo.innerText = country + " " + region;
+  timeZoneInfo.innerText = timezone;
+  ispInfo.innerText = mapData.isp;
+
+  map.setView([lat, lng]);
+  L.marker([lat, lng], { icon: markerIcon }).addTo(map);
+  if (matchMedia("(max-width: 1023px)").matches) {
+    addOffset(map);
+  }
 }
 ```
 
-If you want more help with writing markdown, we'd recommend checking out [The Markdown Guide](https://www.markdownguide.org/) to learn more.
+### Продолжение разработки
 
-**Note: Delete this note and the content within this section and replace with your own learnings.**
+Дальше я хочу продолжить работу вместе с API, так же поработать с сборщиком WebPack и дальше хочу добавить в проект возможность находить по местоположению. И добавить функцию работы не только по IP адресу, но и по домену.
 
-### Continued development
+### Полезные ресурсы
 
-Use this section to outline areas that you want to continue focusing on in future projects. These could be concepts you're still not completely comfortable with or techniques you found useful that you want to refine and perfect.
+- [Изменено структура parcel] (https://parceljs.org/getting-started/migration/) - Структура parcel немного изменилась, со временем последнего использования. Документация очень помогла мне решить мою задачу.
+- [Решение проблемы с deploy в vercel] (https://www.youtube.com/watch?v=E_n-jPGniCI&ab_channel=Webtime.Studio) - Я очень долго копался в запуске своего приложения, это видео помогло мне запустить свое приложения vercel
 
-**Note: Delete this note and the content within this section and replace with your own plans for continued development.**
+## Автор
 
-### Useful resources
+- Мой блок на hashnode- [Ibrakhimzhanov Islam] (https://middleit.hashnode.dev/)
+- Frontend Mentor - [@Ibrakhimzhanov](https://www.frontendmentor.io/profile/Ibrakhimzhanov)
+- Linkedin - [@Ibrakhimzhanov](https://www.linkedin.com/in/ibrakhimzhanov/)
 
-- [Example resource 1](https://www.example.com) - This helped me for XYZ reason. I really liked this pattern and will use it going forward.
-- [Example resource 2](https://www.example.com) - This is an amazing article which helped me finally understand XYZ. I'd recommend it to anyone still learning this concept.
+## Благодарность
 
-**Note: Delete this note and replace the list above with resources that helped you during the challenge. These could come in handy for anyone viewing your solution or for yourself when you look back on this project in the future.**
-
-## Author
-
-- Website - [Add your name here](https://www.your-site.com)
-- Frontend Mentor - [@yourusername](https://www.frontendmentor.io/profile/yourusername)
-- Twitter - [@yourusername](https://www.twitter.com/yourusername)
-
-**Note: Delete this note and add/remove/edit lines above based on what links you'd like to share.**
-
-## Acknowledgments
-
-This is where you can give a hat tip to anyone who helped you out on this project. Perhaps you worked in a team or got some inspiration from someone else's solution. This is the perfect place to give them some credit.
-
-**Note: Delete this note and edit this section's content as necessary. If you completed this challenge by yourself, feel free to delete this section entirely.**
+Спасибо моему ментору по разработке Михаилу, за помощь в реализации и за терпения научить меня чему-то😊
